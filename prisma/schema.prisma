@@ -7,17 +7,33 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-model materi {
-  id        String     @default(cuid()) @id
-  judul     String
-  isi       Text
+model Materi {
+  id                  String     @default(cuid()) @id
+  judul               String
+  isi                 String     @db.Text
+  namaUser            String
 }
 
-model tugas {
-  id        String     @default(cuid()) @id
-  judul     String
-  isi       String
+model Tugas {
+  id                  String     @default(cuid()) @id
+  judul               String
+  isi                 String     @db.Text
+  tanggalPengumpulan  DateTime
+  namaUser            String
+  tugasMurid          TugasMurid[]
+}
+
+model TugasMurid {
+  id        String    @default(cuid()) @id
+  namaTugas String
+  isi       String    @db.Text
+  gambar    Bytes?
+  namaUser  String
+  nilai     Int?
+  idTugas   String
+  tugas     Tugas     @relation(fields: [idTugas], references: [id])
 }
