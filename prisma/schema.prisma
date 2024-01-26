@@ -2,7 +2,9 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+  output        = "../client"
 }
 
 datasource db {
@@ -13,6 +15,8 @@ datasource db {
 
 model Materi {
   id                  String     @default(cuid()) @id
+  mataPelajaran       String
+  materi              String     @db.Text
   judul               String
   isi                 String     @db.Text
   namaUser            String
@@ -20,6 +24,8 @@ model Materi {
 
 model Tugas {
   id                  String     @default(cuid()) @id
+  mataPelajaran       String
+  materi              String     @db.Text
   judul               String
   isi                 String     @db.Text
   tanggalPengumpulan  DateTime
@@ -28,12 +34,14 @@ model Tugas {
 }
 
 model TugasMurid {
-  id        String    @default(cuid()) @id
-  namaTugas String
-  isi       String    @db.Text
-  gambar    Bytes?
-  namaUser  String
-  nilai     Int?
-  idTugas   String
-  tugas     Tugas     @relation(fields: [idTugas], references: [id])
+  id                  String     @default(cuid()) @id
+  mataPelajaran       String?
+  materi              String?     @db.Text
+  judul               String?
+  isi                 String     @db.Text
+  gambar              Bytes?
+  namaUser            String
+  nilai               Int?
+  idTugas             String
+  tugas               Tugas     @relation(fields: [idTugas], references: [id])
 }

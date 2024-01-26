@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+  output        = "../client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Materi {
+  id                  String     @default(cuid()) @id
+  mataPelajaran       String
+  materi              String     @db.Text
+  judul               String
+  isi                 String     @db.Text
+  namaUser            String
+}
+
+model Tugas {
+  id                  String     @default(cuid()) @id
+  mataPelajaran       String
+  materi              String     @db.Text
+  judul               String
+  isi                 String     @db.Text
+  tanggalPengumpulan  DateTime
+  namaUser            String
+  tugasMurid          TugasMurid[]
+}
+
+model TugasMurid {
+  id                  String     @default(cuid()) @id
+  mataPelajaran       String?
+  materi              String?     @db.Text
+  judul               String?
+  isi                 String     @db.Text
+  gambar              Bytes?
+  namaUser            String
+  nilai               Int?
+  idTugas             String
+  tugas               Tugas     @relation(fields: [idTugas], references: [id])
+}

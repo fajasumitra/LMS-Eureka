@@ -35,7 +35,7 @@ export default function page() {
     if (isFormValid()) {
       localStorage.setItem('nama', nama);
       localStorage.setItem('isGuruMode', isGuruMode ? 'true' : 'false');
-      router.push(isGuruMode ? '/guru' : '/materi')
+      router.push(isGuruMode ? '/create/materi' : '/materi')
     } else {
       setErrorMessage('Password salah')
     }
