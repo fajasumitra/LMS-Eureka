@@ -11,11 +11,13 @@ export default function page() {
   const [tenggat, setTenggat] = React.useState("");
   const [mataPelajaran, setMataPelajaran] = React.useState("");
   const [isi, setIsi] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const data = {
         judul,
         materi,
@@ -37,6 +39,10 @@ export default function page() {
       setTenggat("");
       setIsi("");
       setMataPelajaran("");
+
+      window.location.reload();
+
+      window.alert("Tugas berhasil ditambahkan!");
     } catch (error) {
       console.error("Error saving Tugas:", error);
     }
@@ -53,10 +59,10 @@ export default function page() {
     <>
       <div className="min-h-screen w-screen bg-white">
         <div className="flex">
-          <NavigationMenu />
+          <NavigationMenu link="/" darkMode={true} active="tugas"/>
           <div className="ml-28 mt-10">
             <p className="text-3xl font-semibold">Tambahkan Tugas</p>
-            <div className="w-full h-1 bg-[#39576C] mt-1" />
+            <div className="w-full h-0.5 bg-[#39576C] mt-1" />
             <p className="text-lg mt-1">{nama}</p>
           </div>
         </div>
@@ -74,6 +80,7 @@ export default function page() {
               onChange={(e) => setMataPelajaran(e.target.value)}
               className="col-span-3 w-full border-2 border-gray-400 focus:border-gray-600 py-1 px-3 rounded-full"
               placeholder="Mata Pelajaran"
+              required
             />
             <label
               htmlFor=""
@@ -87,6 +94,7 @@ export default function page() {
               onChange={(e) => setJudul(e.target.value)}
               className="col-span-3 w-full border-2 border-gray-400 focus:border-gray-600 py-1 px-3 rounded-full"
               placeholder="Judul Tugas"
+              required
             />
 
             <label
@@ -101,6 +109,7 @@ export default function page() {
               onChange={(e) => setMateri(e.target.value)}
               className="col-span-3 w-full border-2 border-gray-400 focus:border-gray-600 py-1 px-3 rounded-full"
               placeholder="Materi Tugas"
+              required
             />
 
             <label
@@ -115,6 +124,7 @@ export default function page() {
               onChange={(e) => setTenggat(e.target.value)}
               className="col-span-3 w-full border-2 border-gray-400 focus:border-gray-600 py-1 px-3 rounded-full"
               placeholder="Tenggat Waktu"
+              required
             />
 
             <label
@@ -128,15 +138,26 @@ export default function page() {
               onChange={(e) => setIsi(e.target.value)}
               className="col-span-3 w-full border-2 border-gray-400 focus:border-gray-600 py-1 px-3 rounded-lg h-40"
               placeholder="Isi tugas"
+              required
               style={{ resize: "none" }}
             />
 
-            <button
-              type="submit"
-              className="col-span-4 bg-[#DE575A] text-white py-1.5 px-7 rounded-full w-fit justify-self-end mr-5"
-            >
-              Kirim
-            </button>
+            {loading ?(
+              <button
+                type="submit"
+                className="col-span-4 bg-[#DE575A] text-white py-1.5 px-7 rounded-full w-fit justify-self-end mr-5 disabled:opacity-50"
+                disabled
+              >
+                Kirim
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="col-span-4 bg-[#DE575A] text-white py-1.5 px-7 rounded-full w-fit justify-self-end mr-5"
+              >
+                Kirim
+              </button>
+            )}
           </form>
         </div>
       </div>

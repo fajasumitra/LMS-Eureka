@@ -238,7 +238,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.8.1
-   * Query Engine version: 0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5
+   * Query Engine version: 78caf6feeaed953168c64e15a249c3e9a033ebe2
    */
   export type PrismaVersion = {
     client: string
@@ -2927,6 +2927,7 @@ export namespace Prisma {
     namaUser: string | null
     nilai: number | null
     idTugas: string | null
+    komentar: string | null
   }
 
   export type TugasMuridMaxAggregateOutputType = {
@@ -2939,6 +2940,7 @@ export namespace Prisma {
     namaUser: string | null
     nilai: number | null
     idTugas: string | null
+    komentar: string | null
   }
 
   export type TugasMuridCountAggregateOutputType = {
@@ -2951,6 +2953,7 @@ export namespace Prisma {
     namaUser: number
     nilai: number
     idTugas: number
+    komentar: number
     _all: number
   }
 
@@ -2973,6 +2976,7 @@ export namespace Prisma {
     namaUser?: true
     nilai?: true
     idTugas?: true
+    komentar?: true
   }
 
   export type TugasMuridMaxAggregateInputType = {
@@ -2985,6 +2989,7 @@ export namespace Prisma {
     namaUser?: true
     nilai?: true
     idTugas?: true
+    komentar?: true
   }
 
   export type TugasMuridCountAggregateInputType = {
@@ -2997,6 +3002,7 @@ export namespace Prisma {
     namaUser?: true
     nilai?: true
     idTugas?: true
+    komentar?: true
     _all?: true
   }
 
@@ -3096,6 +3102,7 @@ export namespace Prisma {
     namaUser: string
     nilai: number | null
     idTugas: string
+    komentar: string | null
     _count: TugasMuridCountAggregateOutputType | null
     _avg: TugasMuridAvgAggregateOutputType | null
     _sum: TugasMuridSumAggregateOutputType | null
@@ -3127,6 +3134,7 @@ export namespace Prisma {
     namaUser?: boolean
     nilai?: boolean
     idTugas?: boolean
+    komentar?: boolean
     tugas?: boolean | TugasDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasMurid"]>
 
@@ -3140,6 +3148,7 @@ export namespace Prisma {
     namaUser?: boolean
     nilai?: boolean
     idTugas?: boolean
+    komentar?: boolean
   }
 
   export type TugasMuridInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3162,6 +3171,7 @@ export namespace Prisma {
       namaUser: string
       nilai: number | null
       idTugas: string
+      komentar: string | null
     }, ExtArgs["result"]["tugasMurid"]>
     composites: {}
   }
@@ -3566,6 +3576,7 @@ export namespace Prisma {
     readonly namaUser: FieldRef<"TugasMurid", 'String'>
     readonly nilai: FieldRef<"TugasMurid", 'Int'>
     readonly idTugas: FieldRef<"TugasMurid", 'String'>
+    readonly komentar: FieldRef<"TugasMurid", 'String'>
   }
     
 
@@ -3941,7 +3952,8 @@ export namespace Prisma {
     gambar: 'gambar',
     namaUser: 'namaUser',
     nilai: 'nilai',
-    idTugas: 'idTugas'
+    idTugas: 'idTugas',
+    komentar: 'komentar'
   };
 
   export type TugasMuridScalarFieldEnum = (typeof TugasMuridScalarFieldEnum)[keyof typeof TugasMuridScalarFieldEnum]
@@ -4184,6 +4196,7 @@ export namespace Prisma {
     namaUser?: StringFilter<"TugasMurid"> | string
     nilai?: IntNullableFilter<"TugasMurid"> | number | null
     idTugas?: StringFilter<"TugasMurid"> | string
+    komentar?: StringNullableFilter<"TugasMurid"> | string | null
     tugas?: XOR<TugasRelationFilter, TugasWhereInput>
   }
 
@@ -4197,6 +4210,7 @@ export namespace Prisma {
     namaUser?: SortOrder
     nilai?: SortOrderInput | SortOrder
     idTugas?: SortOrder
+    komentar?: SortOrderInput | SortOrder
     tugas?: TugasOrderByWithRelationInput
   }
 
@@ -4213,6 +4227,7 @@ export namespace Prisma {
     namaUser?: StringFilter<"TugasMurid"> | string
     nilai?: IntNullableFilter<"TugasMurid"> | number | null
     idTugas?: StringFilter<"TugasMurid"> | string
+    komentar?: StringNullableFilter<"TugasMurid"> | string | null
     tugas?: XOR<TugasRelationFilter, TugasWhereInput>
   }, "id">
 
@@ -4226,6 +4241,7 @@ export namespace Prisma {
     namaUser?: SortOrder
     nilai?: SortOrderInput | SortOrder
     idTugas?: SortOrder
+    komentar?: SortOrderInput | SortOrder
     _count?: TugasMuridCountOrderByAggregateInput
     _avg?: TugasMuridAvgOrderByAggregateInput
     _max?: TugasMuridMaxOrderByAggregateInput
@@ -4246,6 +4262,7 @@ export namespace Prisma {
     namaUser?: StringWithAggregatesFilter<"TugasMurid"> | string
     nilai?: IntNullableWithAggregatesFilter<"TugasMurid"> | number | null
     idTugas?: StringWithAggregatesFilter<"TugasMurid"> | string
+    komentar?: StringNullableWithAggregatesFilter<"TugasMurid"> | string | null
   }
 
   export type MateriCreateInput = {
@@ -4394,6 +4411,7 @@ export namespace Prisma {
     gambar?: Buffer | null
     namaUser: string
     nilai?: number | null
+    komentar?: string | null
     tugas: TugasCreateNestedOneWithoutTugasMuridInput
   }
 
@@ -4407,6 +4425,7 @@ export namespace Prisma {
     namaUser: string
     nilai?: number | null
     idTugas: string
+    komentar?: string | null
   }
 
   export type TugasMuridUpdateInput = {
@@ -4418,6 +4437,7 @@ export namespace Prisma {
     gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
+    komentar?: NullableStringFieldUpdateOperationsInput | string | null
     tugas?: TugasUpdateOneRequiredWithoutTugasMuridNestedInput
   }
 
@@ -4431,6 +4451,7 @@ export namespace Prisma {
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     idTugas?: StringFieldUpdateOperationsInput | string
+    komentar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TugasMuridCreateManyInput = {
@@ -4443,6 +4464,7 @@ export namespace Prisma {
     namaUser: string
     nilai?: number | null
     idTugas: string
+    komentar?: string | null
   }
 
   export type TugasMuridUpdateManyMutationInput = {
@@ -4454,6 +4476,7 @@ export namespace Prisma {
     gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
+    komentar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TugasMuridUncheckedUpdateManyInput = {
@@ -4466,6 +4489,7 @@ export namespace Prisma {
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     idTugas?: StringFieldUpdateOperationsInput | string
+    komentar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4646,6 +4670,7 @@ export namespace Prisma {
     namaUser?: SortOrder
     nilai?: SortOrder
     idTugas?: SortOrder
+    komentar?: SortOrder
   }
 
   export type TugasMuridAvgOrderByAggregateInput = {
@@ -4662,6 +4687,7 @@ export namespace Prisma {
     namaUser?: SortOrder
     nilai?: SortOrder
     idTugas?: SortOrder
+    komentar?: SortOrder
   }
 
   export type TugasMuridMinOrderByAggregateInput = {
@@ -4674,6 +4700,7 @@ export namespace Prisma {
     namaUser?: SortOrder
     nilai?: SortOrder
     idTugas?: SortOrder
+    komentar?: SortOrder
   }
 
   export type TugasMuridSumOrderByAggregateInput = {
@@ -4966,6 +4993,7 @@ export namespace Prisma {
     gambar?: Buffer | null
     namaUser: string
     nilai?: number | null
+    komentar?: string | null
   }
 
   export type TugasMuridUncheckedCreateWithoutTugasInput = {
@@ -4977,6 +5005,7 @@ export namespace Prisma {
     gambar?: Buffer | null
     namaUser: string
     nilai?: number | null
+    komentar?: string | null
   }
 
   export type TugasMuridCreateOrConnectWithoutTugasInput = {
@@ -5018,6 +5047,7 @@ export namespace Prisma {
     namaUser?: StringFilter<"TugasMurid"> | string
     nilai?: IntNullableFilter<"TugasMurid"> | number | null
     idTugas?: StringFilter<"TugasMurid"> | string
+    komentar?: StringNullableFilter<"TugasMurid"> | string | null
   }
 
   export type TugasCreateWithoutTugasMuridInput = {
@@ -5085,6 +5115,7 @@ export namespace Prisma {
     gambar?: Buffer | null
     namaUser: string
     nilai?: number | null
+    komentar?: string | null
   }
 
   export type TugasMuridUpdateWithoutTugasInput = {
@@ -5096,6 +5127,7 @@ export namespace Prisma {
     gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
+    komentar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TugasMuridUncheckedUpdateWithoutTugasInput = {
@@ -5107,6 +5139,7 @@ export namespace Prisma {
     gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
+    komentar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TugasMuridUncheckedUpdateManyWithoutTugasInput = {
@@ -5118,6 +5151,7 @@ export namespace Prisma {
     gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
+    komentar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

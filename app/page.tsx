@@ -40,10 +40,10 @@ export default function page() {
       setErrorMessage('Password salah')
     }
   }
-
+  
   return (
     <>
-      <div className='w-screen h-screen pt-10 font-poppins'>
+      <div className='w-screen min-h-screen pt-10 font-poppins bg-[#FADE9D]'>
         <header className='absolute top-0 right-0 m-5'>
           <button
             type='button'

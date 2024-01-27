@@ -43,5 +43,6 @@ model TugasMurid {
   namaUser            String
   nilai               Int?
   idTugas             String
+  komentar            String?    @db.Text
   tugas               Tugas     @relation(fields: [idTugas], references: [id])
 }
