@@ -19,6 +19,7 @@ model Materi {
   materi              String     @db.Text
   judul               String
   isi                 String     @db.Text
+  filePath            String
   namaUser            String
 }
 
@@ -39,7 +40,7 @@ model TugasMurid {
   materi              String?     @db.Text
   judul               String?
   isi                 String     @db.Text
-  gambar              Bytes?
+  filePath            String
   namaUser            String
   nilai               Int?
   idTugas             String

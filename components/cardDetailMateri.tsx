@@ -9,6 +9,7 @@ interface ModuleCardProps {
   id : string;
   komentarPassed : string;
   color : number;
+  filePath : string;
 }
 
 interface TugasMuridData {
@@ -20,7 +21,7 @@ interface TugasMuridData {
   komentar: string;
 }
 
-const ModuleCardProps: React.FC<ModuleCardProps> = ({nama, isi, nilai, isGuruMode, id, komentarPassed, color }) => {
+const ModuleCardProps: React.FC<ModuleCardProps> = ({nama, isi, nilai, isGuruMode, id, komentarPassed, color, filePath }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const modalRef = React.useRef<HTMLDivElement | null>(null);
   const [nilaiBaru, setNilaiBaru] = React.useState(nilai);
@@ -92,7 +93,7 @@ const ModuleCardProps: React.FC<ModuleCardProps> = ({nama, isi, nilai, isGuruMod
         <div className='w-60 h-1/2 rounded-lg p-4' style={{ backgroundColor: getRandomColor() }}>
           <div className='relative w-full'>
             <p className='text-2xl font-semibold'>{nama}</p>
-            <img src="/mindmap.png" alt="mindmap" className='my-2'/>
+            <img src={filePath} alt="mindmap" className='my-2 rounded-lg w-full h-36 object-contain'/>
             <p className='text-sm'>{isi}</p>
             {nilai === 5 && <button className='absolute right-[-10px] w-fit bottom-4 bg-white rounded-full p-2' onClick={() => setIsModalOpen(true)}><img src="/love.png" alt="love" /></button>}
             {nilai === 4 && <button className='absolute right-[-10px] w-fit bottom-4 bg-white rounded-full p-2' onClick={() => setIsModalOpen(true)}><img src="/2.png" alt="love" /></button>}

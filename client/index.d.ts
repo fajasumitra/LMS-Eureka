@@ -1069,6 +1069,7 @@ export namespace Prisma {
     materi: string | null
     judul: string | null
     isi: string | null
+    filePath: string | null
     namaUser: string | null
   }
 
@@ -1078,6 +1079,7 @@ export namespace Prisma {
     materi: string | null
     judul: string | null
     isi: string | null
+    filePath: string | null
     namaUser: string | null
   }
 
@@ -1087,6 +1089,7 @@ export namespace Prisma {
     materi: number
     judul: number
     isi: number
+    filePath: number
     namaUser: number
     _all: number
   }
@@ -1098,6 +1101,7 @@ export namespace Prisma {
     materi?: true
     judul?: true
     isi?: true
+    filePath?: true
     namaUser?: true
   }
 
@@ -1107,6 +1111,7 @@ export namespace Prisma {
     materi?: true
     judul?: true
     isi?: true
+    filePath?: true
     namaUser?: true
   }
 
@@ -1116,6 +1121,7 @@ export namespace Prisma {
     materi?: true
     judul?: true
     isi?: true
+    filePath?: true
     namaUser?: true
     _all?: true
   }
@@ -1198,6 +1204,7 @@ export namespace Prisma {
     materi: string
     judul: string
     isi: string
+    filePath: string
     namaUser: string
     _count: MateriCountAggregateOutputType | null
     _min: MateriMinAggregateOutputType | null
@@ -1224,6 +1231,7 @@ export namespace Prisma {
     materi?: boolean
     judul?: boolean
     isi?: boolean
+    filePath?: boolean
     namaUser?: boolean
   }, ExtArgs["result"]["materi"]>
 
@@ -1233,6 +1241,7 @@ export namespace Prisma {
     materi?: boolean
     judul?: boolean
     isi?: boolean
+    filePath?: boolean
     namaUser?: boolean
   }
 
@@ -1246,6 +1255,7 @@ export namespace Prisma {
       materi: string
       judul: string
       isi: string
+      filePath: string
       namaUser: string
     }, ExtArgs["result"]["materi"]>
     composites: {}
@@ -1646,6 +1656,7 @@ export namespace Prisma {
     readonly materi: FieldRef<"Materi", 'String'>
     readonly judul: FieldRef<"Materi", 'String'>
     readonly isi: FieldRef<"Materi", 'String'>
+    readonly filePath: FieldRef<"Materi", 'String'>
     readonly namaUser: FieldRef<"Materi", 'String'>
   }
     
@@ -2923,7 +2934,7 @@ export namespace Prisma {
     materi: string | null
     judul: string | null
     isi: string | null
-    gambar: Buffer | null
+    filePath: string | null
     namaUser: string | null
     nilai: number | null
     idTugas: string | null
@@ -2936,7 +2947,7 @@ export namespace Prisma {
     materi: string | null
     judul: string | null
     isi: string | null
-    gambar: Buffer | null
+    filePath: string | null
     namaUser: string | null
     nilai: number | null
     idTugas: string | null
@@ -2949,7 +2960,7 @@ export namespace Prisma {
     materi: number
     judul: number
     isi: number
-    gambar: number
+    filePath: number
     namaUser: number
     nilai: number
     idTugas: number
@@ -2972,7 +2983,7 @@ export namespace Prisma {
     materi?: true
     judul?: true
     isi?: true
-    gambar?: true
+    filePath?: true
     namaUser?: true
     nilai?: true
     idTugas?: true
@@ -2985,7 +2996,7 @@ export namespace Prisma {
     materi?: true
     judul?: true
     isi?: true
-    gambar?: true
+    filePath?: true
     namaUser?: true
     nilai?: true
     idTugas?: true
@@ -2998,7 +3009,7 @@ export namespace Prisma {
     materi?: true
     judul?: true
     isi?: true
-    gambar?: true
+    filePath?: true
     namaUser?: true
     nilai?: true
     idTugas?: true
@@ -3098,7 +3109,7 @@ export namespace Prisma {
     materi: string | null
     judul: string | null
     isi: string
-    gambar: Buffer | null
+    filePath: string
     namaUser: string
     nilai: number | null
     idTugas: string
@@ -3130,7 +3141,7 @@ export namespace Prisma {
     materi?: boolean
     judul?: boolean
     isi?: boolean
-    gambar?: boolean
+    filePath?: boolean
     namaUser?: boolean
     nilai?: boolean
     idTugas?: boolean
@@ -3144,7 +3155,7 @@ export namespace Prisma {
     materi?: boolean
     judul?: boolean
     isi?: boolean
-    gambar?: boolean
+    filePath?: boolean
     namaUser?: boolean
     nilai?: boolean
     idTugas?: boolean
@@ -3167,7 +3178,7 @@ export namespace Prisma {
       materi: string | null
       judul: string | null
       isi: string
-      gambar: Buffer | null
+      filePath: string
       namaUser: string
       nilai: number | null
       idTugas: string
@@ -3572,7 +3583,7 @@ export namespace Prisma {
     readonly materi: FieldRef<"TugasMurid", 'String'>
     readonly judul: FieldRef<"TugasMurid", 'String'>
     readonly isi: FieldRef<"TugasMurid", 'String'>
-    readonly gambar: FieldRef<"TugasMurid", 'Bytes'>
+    readonly filePath: FieldRef<"TugasMurid", 'String'>
     readonly namaUser: FieldRef<"TugasMurid", 'String'>
     readonly nilai: FieldRef<"TugasMurid", 'Int'>
     readonly idTugas: FieldRef<"TugasMurid", 'String'>
@@ -3924,6 +3935,7 @@ export namespace Prisma {
     materi: 'materi',
     judul: 'judul',
     isi: 'isi',
+    filePath: 'filePath',
     namaUser: 'namaUser'
   };
 
@@ -3949,7 +3961,7 @@ export namespace Prisma {
     materi: 'materi',
     judul: 'judul',
     isi: 'isi',
-    gambar: 'gambar',
+    filePath: 'filePath',
     namaUser: 'namaUser',
     nilai: 'nilai',
     idTugas: 'idTugas',
@@ -4017,20 +4029,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Bytes'
-   */
-  export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
-    
-
-
-  /**
-   * Reference to a field of type 'Bytes[]'
-   */
-  export type ListBytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -4070,6 +4068,7 @@ export namespace Prisma {
     materi?: StringFilter<"Materi"> | string
     judul?: StringFilter<"Materi"> | string
     isi?: StringFilter<"Materi"> | string
+    filePath?: StringFilter<"Materi"> | string
     namaUser?: StringFilter<"Materi"> | string
   }
 
@@ -4079,6 +4078,7 @@ export namespace Prisma {
     materi?: SortOrder
     judul?: SortOrder
     isi?: SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
   }
 
@@ -4091,6 +4091,7 @@ export namespace Prisma {
     materi?: StringFilter<"Materi"> | string
     judul?: StringFilter<"Materi"> | string
     isi?: StringFilter<"Materi"> | string
+    filePath?: StringFilter<"Materi"> | string
     namaUser?: StringFilter<"Materi"> | string
   }, "id">
 
@@ -4100,6 +4101,7 @@ export namespace Prisma {
     materi?: SortOrder
     judul?: SortOrder
     isi?: SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
     _count?: MateriCountOrderByAggregateInput
     _max?: MateriMaxOrderByAggregateInput
@@ -4115,6 +4117,7 @@ export namespace Prisma {
     materi?: StringWithAggregatesFilter<"Materi"> | string
     judul?: StringWithAggregatesFilter<"Materi"> | string
     isi?: StringWithAggregatesFilter<"Materi"> | string
+    filePath?: StringWithAggregatesFilter<"Materi"> | string
     namaUser?: StringWithAggregatesFilter<"Materi"> | string
   }
 
@@ -4192,7 +4195,7 @@ export namespace Prisma {
     materi?: StringNullableFilter<"TugasMurid"> | string | null
     judul?: StringNullableFilter<"TugasMurid"> | string | null
     isi?: StringFilter<"TugasMurid"> | string
-    gambar?: BytesNullableFilter<"TugasMurid"> | Buffer | null
+    filePath?: StringFilter<"TugasMurid"> | string
     namaUser?: StringFilter<"TugasMurid"> | string
     nilai?: IntNullableFilter<"TugasMurid"> | number | null
     idTugas?: StringFilter<"TugasMurid"> | string
@@ -4206,7 +4209,7 @@ export namespace Prisma {
     materi?: SortOrderInput | SortOrder
     judul?: SortOrderInput | SortOrder
     isi?: SortOrder
-    gambar?: SortOrderInput | SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
     nilai?: SortOrderInput | SortOrder
     idTugas?: SortOrder
@@ -4223,7 +4226,7 @@ export namespace Prisma {
     materi?: StringNullableFilter<"TugasMurid"> | string | null
     judul?: StringNullableFilter<"TugasMurid"> | string | null
     isi?: StringFilter<"TugasMurid"> | string
-    gambar?: BytesNullableFilter<"TugasMurid"> | Buffer | null
+    filePath?: StringFilter<"TugasMurid"> | string
     namaUser?: StringFilter<"TugasMurid"> | string
     nilai?: IntNullableFilter<"TugasMurid"> | number | null
     idTugas?: StringFilter<"TugasMurid"> | string
@@ -4237,7 +4240,7 @@ export namespace Prisma {
     materi?: SortOrderInput | SortOrder
     judul?: SortOrderInput | SortOrder
     isi?: SortOrder
-    gambar?: SortOrderInput | SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
     nilai?: SortOrderInput | SortOrder
     idTugas?: SortOrder
@@ -4258,7 +4261,7 @@ export namespace Prisma {
     materi?: StringNullableWithAggregatesFilter<"TugasMurid"> | string | null
     judul?: StringNullableWithAggregatesFilter<"TugasMurid"> | string | null
     isi?: StringWithAggregatesFilter<"TugasMurid"> | string
-    gambar?: BytesNullableWithAggregatesFilter<"TugasMurid"> | Buffer | null
+    filePath?: StringWithAggregatesFilter<"TugasMurid"> | string
     namaUser?: StringWithAggregatesFilter<"TugasMurid"> | string
     nilai?: IntNullableWithAggregatesFilter<"TugasMurid"> | number | null
     idTugas?: StringWithAggregatesFilter<"TugasMurid"> | string
@@ -4271,6 +4274,7 @@ export namespace Prisma {
     materi: string
     judul: string
     isi: string
+    filePath: string
     namaUser: string
   }
 
@@ -4280,6 +4284,7 @@ export namespace Prisma {
     materi: string
     judul: string
     isi: string
+    filePath: string
     namaUser: string
   }
 
@@ -4289,6 +4294,7 @@ export namespace Prisma {
     materi?: StringFieldUpdateOperationsInput | string
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4298,6 +4304,7 @@ export namespace Prisma {
     materi?: StringFieldUpdateOperationsInput | string
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4307,6 +4314,7 @@ export namespace Prisma {
     materi: string
     judul: string
     isi: string
+    filePath: string
     namaUser: string
   }
 
@@ -4316,6 +4324,7 @@ export namespace Prisma {
     materi?: StringFieldUpdateOperationsInput | string
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4325,6 +4334,7 @@ export namespace Prisma {
     materi?: StringFieldUpdateOperationsInput | string
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4408,7 +4418,7 @@ export namespace Prisma {
     materi?: string | null
     judul?: string | null
     isi: string
-    gambar?: Buffer | null
+    filePath: string
     namaUser: string
     nilai?: number | null
     komentar?: string | null
@@ -4421,7 +4431,7 @@ export namespace Prisma {
     materi?: string | null
     judul?: string | null
     isi: string
-    gambar?: Buffer | null
+    filePath: string
     namaUser: string
     nilai?: number | null
     idTugas: string
@@ -4434,7 +4444,7 @@ export namespace Prisma {
     materi?: NullableStringFieldUpdateOperationsInput | string | null
     judul?: NullableStringFieldUpdateOperationsInput | string | null
     isi?: StringFieldUpdateOperationsInput | string
-    gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     komentar?: NullableStringFieldUpdateOperationsInput | string | null
@@ -4447,7 +4457,7 @@ export namespace Prisma {
     materi?: NullableStringFieldUpdateOperationsInput | string | null
     judul?: NullableStringFieldUpdateOperationsInput | string | null
     isi?: StringFieldUpdateOperationsInput | string
-    gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     idTugas?: StringFieldUpdateOperationsInput | string
@@ -4460,7 +4470,7 @@ export namespace Prisma {
     materi?: string | null
     judul?: string | null
     isi: string
-    gambar?: Buffer | null
+    filePath: string
     namaUser: string
     nilai?: number | null
     idTugas: string
@@ -4473,7 +4483,7 @@ export namespace Prisma {
     materi?: NullableStringFieldUpdateOperationsInput | string | null
     judul?: NullableStringFieldUpdateOperationsInput | string | null
     isi?: StringFieldUpdateOperationsInput | string
-    gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     komentar?: NullableStringFieldUpdateOperationsInput | string | null
@@ -4485,7 +4495,7 @@ export namespace Prisma {
     materi?: NullableStringFieldUpdateOperationsInput | string | null
     judul?: NullableStringFieldUpdateOperationsInput | string | null
     isi?: StringFieldUpdateOperationsInput | string
-    gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     idTugas?: StringFieldUpdateOperationsInput | string
@@ -4513,6 +4523,7 @@ export namespace Prisma {
     materi?: SortOrder
     judul?: SortOrder
     isi?: SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
   }
 
@@ -4522,6 +4533,7 @@ export namespace Prisma {
     materi?: SortOrder
     judul?: SortOrder
     isi?: SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
   }
 
@@ -4531,6 +4543,7 @@ export namespace Prisma {
     materi?: SortOrder
     judul?: SortOrder
     isi?: SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
   }
 
@@ -4632,13 +4645,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type BytesNullableFilter<$PrismaModel = never> = {
-    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
-    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableFilter<$PrismaModel> | Buffer | null
-  }
-
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -4666,7 +4672,7 @@ export namespace Prisma {
     materi?: SortOrder
     judul?: SortOrder
     isi?: SortOrder
-    gambar?: SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
     nilai?: SortOrder
     idTugas?: SortOrder
@@ -4683,7 +4689,7 @@ export namespace Prisma {
     materi?: SortOrder
     judul?: SortOrder
     isi?: SortOrder
-    gambar?: SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
     nilai?: SortOrder
     idTugas?: SortOrder
@@ -4696,7 +4702,7 @@ export namespace Prisma {
     materi?: SortOrder
     judul?: SortOrder
     isi?: SortOrder
-    gambar?: SortOrder
+    filePath?: SortOrder
     namaUser?: SortOrder
     nilai?: SortOrder
     idTugas?: SortOrder
@@ -4723,16 +4729,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type BytesNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
-    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Buffer | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBytesNullableFilter<$PrismaModel>
-    _max?: NestedBytesNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4809,10 +4805,6 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type NullableBytesFieldUpdateOperationsInput = {
-    set?: Buffer | null
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -4912,13 +4904,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedBytesNullableFilter<$PrismaModel = never> = {
-    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
-    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableFilter<$PrismaModel> | Buffer | null
-  }
-
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -4945,16 +4930,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBytesNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
-    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Buffer | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBytesNullableFilter<$PrismaModel>
-    _max?: NestedBytesNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4990,7 +4965,7 @@ export namespace Prisma {
     materi?: string | null
     judul?: string | null
     isi: string
-    gambar?: Buffer | null
+    filePath: string
     namaUser: string
     nilai?: number | null
     komentar?: string | null
@@ -5002,7 +4977,7 @@ export namespace Prisma {
     materi?: string | null
     judul?: string | null
     isi: string
-    gambar?: Buffer | null
+    filePath: string
     namaUser: string
     nilai?: number | null
     komentar?: string | null
@@ -5043,7 +5018,7 @@ export namespace Prisma {
     materi?: StringNullableFilter<"TugasMurid"> | string | null
     judul?: StringNullableFilter<"TugasMurid"> | string | null
     isi?: StringFilter<"TugasMurid"> | string
-    gambar?: BytesNullableFilter<"TugasMurid"> | Buffer | null
+    filePath?: StringFilter<"TugasMurid"> | string
     namaUser?: StringFilter<"TugasMurid"> | string
     nilai?: IntNullableFilter<"TugasMurid"> | number | null
     idTugas?: StringFilter<"TugasMurid"> | string
@@ -5112,7 +5087,7 @@ export namespace Prisma {
     materi?: string | null
     judul?: string | null
     isi: string
-    gambar?: Buffer | null
+    filePath: string
     namaUser: string
     nilai?: number | null
     komentar?: string | null
@@ -5124,7 +5099,7 @@ export namespace Prisma {
     materi?: NullableStringFieldUpdateOperationsInput | string | null
     judul?: NullableStringFieldUpdateOperationsInput | string | null
     isi?: StringFieldUpdateOperationsInput | string
-    gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     komentar?: NullableStringFieldUpdateOperationsInput | string | null
@@ -5136,7 +5111,7 @@ export namespace Prisma {
     materi?: NullableStringFieldUpdateOperationsInput | string | null
     judul?: NullableStringFieldUpdateOperationsInput | string | null
     isi?: StringFieldUpdateOperationsInput | string
-    gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     komentar?: NullableStringFieldUpdateOperationsInput | string | null
@@ -5148,7 +5123,7 @@ export namespace Prisma {
     materi?: NullableStringFieldUpdateOperationsInput | string | null
     judul?: NullableStringFieldUpdateOperationsInput | string | null
     isi?: StringFieldUpdateOperationsInput | string
-    gambar?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    filePath?: StringFieldUpdateOperationsInput | string
     namaUser?: StringFieldUpdateOperationsInput | string
     nilai?: NullableIntFieldUpdateOperationsInput | number | null
     komentar?: NullableStringFieldUpdateOperationsInput | string | null

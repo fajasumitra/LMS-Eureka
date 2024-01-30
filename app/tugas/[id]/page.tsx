@@ -12,6 +12,7 @@ interface TugasMuridData {
   namaUser: string;
   nilai: number;
   komentar: string;
+  filePath: string;
 }
 
 interface tugasDetail {
@@ -34,26 +35,30 @@ export default function Index({ params }: { params: { id: string } }) {
   const [tugasDetail, setTugasDetail] = useState<tugasDetail>();
   const [loading, setLoading] = useState(true);
   const [loadingButton, setLoadingButton] = React.useState(false);
+  const [file, setFile] = React.useState<File | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       setLoadingButton(true);
-      const data = {
-        name,
-        isi,
-      };
+      
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('isi', isi);
+      if (file) {
+        formData.append('file', file);
+      }
 
       // Save the data to your Next.js API route
       await fetch(`/api/createTugasMurid?id=${params.id}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       setName('');
       setIsi('');
+      setFile(null);
 
       window.location.reload();
 
@@ -143,13 +148,13 @@ export default function Index({ params }: { params: { id: string } }) {
             <p className="text-2xl text-gray-400 text-center">Tambahkan Tugas</p>
           </div>
         ) : (tugasList.map((tugas, index) => (
-            <CardDetailMateri komentarPassed={tugas.komentar} id={tugas.id} nama={tugas.namaUser} isi={tugas.isi} key={tugas.id} nilai={tugas.nilai} isGuruMode={isGuruMode} color={index % 5}/>
+            <CardDetailMateri komentarPassed={tugas.komentar} id={tugas.id} nama={tugas.namaUser} isi={tugas.isi} key={tugas.id} nilai={tugas.nilai} isGuruMode={isGuruMode} color={index % 5} filePath={`/${tugas.filePath.replace(/\\/g, '/')}`}/>
           )))}
         </div>
         <Nambah openModal={openModal} />
         {isModalOpen && (
-          <div className="w-1/5 broder-2 fixed bg-white right-28 bottom-0 h-2/5 rounded-t-lg">
-          <form onSubmit={handleSubmit} className="flex flex-col">
+          <div className="w-1/5 broder-2 border fixed bg-white right-28 bottom-0 h-2/5 rounded-t-lg">
+          <form onSubmit={handleSubmit} className="flex flex-col" encType="multipart/form-data">
             <div className="flex flex-row-reverse border-b-2">
               <button onClick={closeModal}>
                 <img src="/x.png" alt="" className="w-4 m-3" />
@@ -177,6 +182,15 @@ export default function Index({ params }: { params: { id: string } }) {
               onChange={(e) => setIsi(e.target.value)}
               required
             ></textarea>
+            <div className='flex items-center justify-center'>
+            <input
+              type="file"
+              onChange={(e) => {
+                const selectedFile = e.target.files?.[0];
+                setFile(selectedFile || null);
+              }}
+              className="text-sm ml-2"
+            />
             {loadingButton ? (
             <button
               type="submit"
@@ -193,6 +207,7 @@ export default function Index({ params }: { params: { id: string } }) {
                   Kirim
                 </button>
               )}
+            </div>
           </form>
         </div>
         )}

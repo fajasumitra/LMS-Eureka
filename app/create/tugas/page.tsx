@@ -12,6 +12,7 @@ export default function page() {
   const [mataPelajaran, setMataPelajaran] = React.useState("");
   const [isi, setIsi] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const [isGuruMode, setIsGuruMode] = React.useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -53,6 +54,15 @@ export default function page() {
     const storedNama = localStorage.getItem("nama");
     if (storedNama) {
       setNama(storedNama);
+    }
+
+    const storedGuru = localStorage.getItem("isGuruMode");
+    if (storedGuru) {
+      setIsGuruMode(storedGuru);
+    }
+
+    if (storedGuru !== "true") {
+      window.location.href = "/tugas";
     }
   }, []);
   return (

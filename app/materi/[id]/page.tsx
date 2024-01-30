@@ -10,6 +10,7 @@ interface MateriData {
   materi: string;
   isi: string;
   namaUser: string;
+  filePath: string;
 }
 
 export default function MateriPage({ params }: { params: { id: string } }) {
@@ -58,7 +59,7 @@ export default function MateriPage({ params }: { params: { id: string } }) {
         <div className='rounded-lg border-[3.5px] mx-auto border-[#39576C] w-4/5 p-5 mt-10'>
           <p className='text-center text-2xl font-medium mb-4'>{materi.judul}</p>
           <div className='flex justify-center'>
-            <img src="/Mask group.png" alt="" className='' />
+            <img src={`/${materi.filePath.replace(/\\/g, '/')}`} alt="" className='w-2/6 h-60 object-contain' />
           </div>
           <p className='mt-2'>{materi.isi}</p>
         </div>

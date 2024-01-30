@@ -2,7 +2,6 @@
 
 import React from "react";
 import NavigationMenu from "@/components/navigationMenu";
-import prisma from "../../../prisma/prisma";
 
 export default function page() {
   const [nama, setNama] = React.useState("");
@@ -11,31 +10,35 @@ export default function page() {
   const [mataPelajaran, setMataPelajaran] = React.useState("");
   const [isi, setIsi] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const [file, setFile] = React.useState<File | null>(null);
+  const [isGuruMode, setIsGuruMode] = React.useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       setLoading(true);
-      const data = {
-        judul,
-        materi,
-        mataPelajaran,
-        nama,
-        isi,
-      };
+      const formData = new FormData();
+      formData.append("judul", judul);
+      formData.append("materi", materi);
+      formData.append("mataPelajaran", mataPelajaran);
+      formData.append("nama", nama);
+      formData.append("isi", isi);
+      if (file) {
+        formData.append("file", file);
+      }
 
       // Save the data to your Next.js API route
       await fetch("/api/createMateri", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       setJudul("");
       setMateri("");
       setMataPelajaran("");
       setIsi("");
+      setFile(null);
 
       window.location.reload();
 
@@ -51,12 +54,21 @@ export default function page() {
     if (storedNama) {
       setNama(storedNama);
     }
+
+    const storedGuru = localStorage.getItem("isGuruMode");
+    if (storedGuru) {
+      setIsGuruMode(storedGuru);
+    }
+
+    if (storedGuru !== "true") {
+      window.location.href = "/materi";
+    }
   }, []);
   return (
     <>
       <div className="min-h-screen w-screen bg-white">
         <div className="flex">
-          <NavigationMenu link="/" darkMode={true} active="materi"/>
+          <NavigationMenu link="/" darkMode={true} active="materi" />
           <div className="ml-28 mt-10">
             <p className="text-3xl font-semibold">Tambahkan Materi</p>
             <div className="w-full h-0.5 bg-[#39576C] mt-1" />
@@ -64,7 +76,7 @@ export default function page() {
           </div>
         </div>
         <div className="ml-32 mt-16  font-inter w-fit">
-          <form onSubmit={handleSubmit} className="grid grid-cols-4 gap-3">
+          <form onSubmit={handleSubmit} className="grid grid-cols-4 gap-3" encType="multipart/form-data">
             <label
               htmlFor=""
               className="mr-4 text-xl font-medium text-gray-700"
@@ -111,6 +123,22 @@ export default function page() {
               htmlFor=""
               className="mr-4 text-xl font-medium text-gray-700"
             >
+              File
+            </label>
+            <input
+              type="file"
+              onChange={(e) => {
+                const selectedFile = e.target.files?.[0];
+                setFile(selectedFile || null);
+              }}
+              className="col-span-3 w-full py-1 px-3"
+            />
+
+
+            <label
+              htmlFor=""
+              className="mr-4 text-xl font-medium text-gray-700"
+            >
               Isi
             </label>
             <textarea
@@ -120,7 +148,7 @@ export default function page() {
               placeholder="Isi Materi"
               style={{ resize: "none" }}
             />
-            {loading ?(
+            {loading ? (
               <button
                 type="submit"
                 className="col-span-4 bg-[#DE575A] text-white py-1.5 px-7 rounded-full w-fit justify-self-end mr-5 disabled:opacity-50"

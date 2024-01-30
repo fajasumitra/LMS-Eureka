@@ -113,6 +113,7 @@ exports.Prisma.MateriScalarFieldEnum = {
   materi: 'materi',
   judul: 'judul',
   isi: 'isi',
+  filePath: 'filePath',
   namaUser: 'namaUser'
 };
 
@@ -132,7 +133,7 @@ exports.Prisma.TugasMuridScalarFieldEnum = {
   materi: 'materi',
   judul: 'judul',
   isi: 'isi',
-  gambar: 'gambar',
+  filePath: 'filePath',
   namaUser: 'namaUser',
   nilai: 'nilai',
   idTugas: 'idTugas',
