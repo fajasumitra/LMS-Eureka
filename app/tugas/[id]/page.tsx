@@ -148,7 +148,7 @@ export default function Index({ params }: { params: { id: string } }) {
             <p className="text-2xl text-gray-400 text-center">Tambahkan Tugas</p>
           </div>
         ) : (tugasList.map((tugas, index) => (
-            <CardDetailMateri komentarPassed={tugas.komentar} id={tugas.id} nama={tugas.namaUser} isi={tugas.isi} key={tugas.id} nilai={tugas.nilai} isGuruMode={isGuruMode} color={index % 5} filePath={`/${tugas.filePath.replace(/\\/g, '/')}`}/>
+            <CardDetailMateri komentarPassed={tugas.komentar} id={tugas.id} nama={tugas.namaUser} isi={tugas.isi} key={tugas.id} nilai={tugas.nilai} isGuruMode={isGuruMode} color={index % 5} filePath={`https://storage.cloud.google.com/portofku/${tugas.filePath.replace(/\\/g, '/')}?authuser=1`}/>
           )))}
         </div>
         <Nambah openModal={openModal} />

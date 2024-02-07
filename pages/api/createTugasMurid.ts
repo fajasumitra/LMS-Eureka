@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@/client';
 import multer from 'multer';
 import path from 'path';
-import fs from 'fs';
+import { Storage } from '@google-cloud/storage';
 
 const prisma = new PrismaClient();
 
@@ -14,62 +14,80 @@ export const config = {
   },
 };
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadPath = path.join ("public");
+// Set up Google Cloud Storage
+const storage = new Storage({
+  projectId: "capstone-project-404600",
+  keyFilename: "./prisma/capstone-project-404600-d694c5c407a6.json",
+});
+const bucket = storage.bucket("portofku");
 
-    // Create the "saved" directory if it doesn't exist
-    if (!fs.existsSync(uploadPath)) {
-      fs.mkdirSync(uploadPath);
-    }
-
-    cb(null, uploadPath);
+// Multer settings
+const multerStorage = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5mb limit
   },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  }
 });
 
-const upload = multer({ storage }).single("file");
+// Multer middleware
+const upload = multerStorage.single('file');
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
-  
-  upload(req as any, res as any, async function (err) {
-    if (err) {
-      console.error('Error uploading file:', err);
-      return res.status(500).json({ error: 'File Upload Error' });
+
+  try {
+    await new Promise<void>((resolve, reject) => {
+      upload(req as any, res as any, (err: any) => {
+        if (err) {
+          console.error('Error uploading file:', err);
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+
+    const { isi, name } = req.body;
+    const { id } = req.query;
+
+    const uploadedFile = req.file as Express.Multer.File & { buffer?: Buffer };
+
+    if (!uploadedFile) {
+      return res.status(400).json({ error: 'File not uploaded' });
     }
-    try {
-      const file = req.file;
-      const { isi, name } = req.body;
-      const { id } = req.query ;
 
-      if (!file) {
-        return res.status(400).json({ error: 'File not uploaded' });
-      }
+    const ext = path.extname(uploadedFile.originalname);
+    const fileName = `${Date.now()}${ext}`;
+    const file = bucket.file(fileName);
+    const stream = file.createWriteStream({
+      resumable: false,
+    });
 
-      const fileName = path.basename(file.path.replace(/\\/g, '/'));
+    console.log('isi:', fileName);
+
+    stream.on('finish', async () => {
+      const publicUrl = `https://storage.googleapis.com/${bucket.name}/${fileName}`;
 
       const newTugasMurid = await prisma.tugasMurid.create({
         data: {
-          isi: isi,
-          namaUser: name,
+          isi: isi as string,
+          namaUser: name as string,
           idTugas: id as string,
           filePath: fileName,
         },
-      })
+      });
 
       console.log(newTugasMurid);
 
       res.status(201).json(newTugasMurid);
-    } catch (error) {
-      console.error('Error creating TugasMurid:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    } finally {
-      await prisma.$disconnect();
-    }
-  })
+    });
+    stream.end(uploadedFile.buffer);
+  } catch (error) {
+    console.error('Error creating TugasMurid:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  } finally {
+    await prisma.$disconnect();
+  }
 }

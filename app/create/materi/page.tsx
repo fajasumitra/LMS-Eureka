@@ -14,8 +14,6 @@ export default function page() {
   const [isGuruMode, setIsGuruMode] = React.useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
     try {
       setLoading(true);
       const formData = new FormData();
@@ -76,7 +74,11 @@ export default function page() {
           </div>
         </div>
         <div className="ml-32 mt-16  font-inter w-fit">
-          <form onSubmit={handleSubmit} className="grid grid-cols-4 gap-3" encType="multipart/form-data">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-4 gap-3"
+            encType="multipart/form-data"
+          >
             <label
               htmlFor=""
               className="mr-4 text-xl font-medium text-gray-700"
@@ -133,7 +135,6 @@ export default function page() {
               }}
               className="col-span-3 w-full py-1 px-3"
             />
-
 
             <label
               htmlFor=""
