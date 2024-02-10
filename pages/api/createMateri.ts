@@ -13,7 +13,6 @@ export const config = {
 // Set up Google Cloud Storage
 const storage = new Storage({
   projectId: "capstone-project-404600",
-  keyFilename: "./prisma/capstone-project-404600-d694c5c407a6.json",
 });
 const bucket = storage.bucket("portofku");
 
@@ -65,7 +64,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             mataPelajaran: mataPelajaran as string,
             judul: judul as string,
             materi: materi as string,
-            namaUser: nama as string,
+            namaUser: nama as string, 
             isi: isi as string,
             filePath: fileName,
           },

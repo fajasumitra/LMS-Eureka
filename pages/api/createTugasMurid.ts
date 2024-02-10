@@ -17,7 +17,6 @@ export const config = {
 // Set up Google Cloud Storage
 const storage = new Storage({
   projectId: "capstone-project-404600",
-  keyFilename: "./prisma/capstone-project-404600-d694c5c407a6.json",
 });
 const bucket = storage.bucket("portofku");
 
