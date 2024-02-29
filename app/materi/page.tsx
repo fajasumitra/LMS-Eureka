@@ -37,11 +37,11 @@ export default function index() {
       .then((response) => response.json())
       .then((materi: MateriData[]) => {
         setMateriList(materi);
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching materi:', error);
-        setLoading(false); // Set loading to false even if there's an error
+        setLoading(false);
       });
   }, []);
   return (

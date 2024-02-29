@@ -144,7 +144,7 @@ export default function page() {
             </label>
             <textarea
               value={isi}
-              onChange={(e) => setIsi(e.target.value)}
+              onChange={(e) => setIsi(e.target.value.replace(/(?:\r\n|\r|\n)/g, '\n'))}
               className="col-span-3 w-full border-2 border-gray-400 focus:border-gray-600 py-1 px-3 rounded-lg h-40"
               placeholder="Isi Materi"
               style={{ resize: "none" }}
