@@ -77,7 +77,7 @@ export default function MateriPage({ params }: { params: { id: string } }) {
           </p>
           <div className="flex justify-center">
             <img
-              src={`https://storage.cloud.google.com/portofku/${materi.filePath.replace(
+              src={`https://storage.googleapis.com/portofku/${materi.filePath.replace(
                 /\\/g,
                 "/"
               )}`}

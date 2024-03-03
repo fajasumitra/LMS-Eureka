@@ -198,7 +198,7 @@ export default function Index({ params }: { params: { id: string } }) {
                 nilai={tugas.nilai}
                 isGuruMode={isGuruMode}
                 color={index % 5}
-                filePath={`https://storage.cloud.google.com/portofku/${tugas.filePath.replace(
+                filePath={`https://storage.googleapis.com/portofku/${tugas.filePath.replace(
                   /\\/g,
                   "/"
                 )}`}
