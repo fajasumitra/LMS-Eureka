@@ -67,13 +67,15 @@ export default function page() {
       <div className="min-h-screen w-screen bg-white">
         <div className="flex">
           <NavigationMenu link="/" darkMode={true} active="materi" />
-          <div className="ml-28 mt-10">
-            <p className="text-3xl font-semibold">Tambahkan Materi</p>
+          <div className="ml-28 md:ml-24 mt-10">
+            <p className="text-3xl font-semibold md:text-2xl">
+              Tambahkan Materi
+            </p>
             <div className="w-full h-0.5 bg-[#39576C] mt-1" />
             <p className="text-lg mt-1">{nama}</p>
           </div>
         </div>
-        <div className="ml-32 mt-16  font-inter w-fit">
+        <div className="ml-32 md:ml-0 md:mx-auto md:p-5 mt-16 md:mt-28 font-inter w-fit">
           <form
             onSubmit={handleSubmit}
             className="grid grid-cols-4 gap-3"
@@ -144,7 +146,9 @@ export default function page() {
             </label>
             <textarea
               value={isi}
-              onChange={(e) => setIsi(e.target.value.replace(/(?:\r\n|\r|\n)/g, '\n'))}
+              onChange={(e) =>
+                setIsi(e.target.value.replace(/(?:\r\n|\r|\n)/g, "\n"))
+              }
               className="col-span-3 w-full border-2 border-gray-400 focus:border-gray-600 py-1 px-3 rounded-lg h-40"
               placeholder="Isi Materi"
               style={{ resize: "none" }}

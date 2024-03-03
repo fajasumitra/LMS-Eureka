@@ -49,7 +49,7 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
     if (storedIsGuru) {
       setIsGuruMode(storedIsGuru);
     }
-  })
+  });
 
   const getRandomColor = () => {
     const bgIndex = backgroundColors[color];
@@ -60,26 +60,27 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
       <div className="relative">
         {isGuruMode === "true" && (
           <button
-          onClick={handleSubmit}
-          className="absolute top-2 right-2 bg-red-400 text-white p-1 rounded-md"
+            onClick={handleSubmit}
+            className="absolute top-2 right-2 bg-red-400 text-white p-1 rounded-md"
           >
             Hapus
           </button>
-          )
-        }
+        )}
         <Link href={`/materi/${id}`} passHref className="w-fit">
-          <div className="w-60 h-[100%] bg-white rounded-lg">
+          <div className="w-60 md:w-40 h-[100%] bg-white rounded-lg">
             <div
               className="h-1/2 p-3 rounded-t-lg"
               style={{ backgroundColor: getRandomColor() }}
             >
-              <p className="text-2xl font-medium text-white overflow-hidden line-clamp-2">
+              <p className="text-2xl font-medium text-white overflow-hidden line-clamp-2 md:text-lg ">
                 {judul}
               </p>
-              <p className="text-sm text-white font-light ">{namaUser}</p>
+              <p className="text-sm text-white font-light md:text-xs">
+                {namaUser}
+              </p>
             </div>
             <div className="p-3">
-              <p className="text-[#473C3C] overflow-hidden line-clamp-3">
+              <p className="text-[#473C3C] overflow-hidden line-clamp-3 md:text-sm">
                 {isi}
               </p>
             </div>

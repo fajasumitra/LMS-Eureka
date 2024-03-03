@@ -68,18 +68,20 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
           </button>
         )}
         <Link href={`/tugas/${id}`} passHref className="w-fit">
-          <div className="w-60 h-full bg-white rounded-lg">
+          <div className="w-60 md:w-40 h-full bg-white rounded-lg">
             <div
-              className="h-1/2 p-3 rounded-t-lg"
+              className="h-1/2 p-3 md:pb-0 rounded-t-lg"
               style={{ backgroundColor: getRandomColor() }}
             >
-              <p className="text-2xl font-medium  text-gray-600 overflow-hidden line-clamp-2">
+              <p className="text-2xl font-medium  text-gray-600 overflow-hidden line-clamp-2 md:text-lg">
                 {judul}
               </p>
-              <p className="text-sm  text-gray-600 font-light">{namaUser}</p>
+              <p className="text-sm text-gray-600 font-light md:font-medium">
+                {namaUser}
+              </p>
             </div>
             <div className="p-3">
-              <p className="text-[#473C3C] overflow-hidden line-clamp-2">
+              <p className="text-[#473C3C] overflow-hidden line-clamp-2 md:text-sm">
                 {isi}
               </p>
             </div>

@@ -104,11 +104,11 @@ const ModuleCardProps: React.FC<ModuleCardProps> = ({
   return (
     <>
       <div
-        className="w-60 rounded-lg p-4"
+        className="w-60 md:w-40 rounded-lg p-4"
         style={{ backgroundColor: getRandomColor() }}
       >
         <div className="relative w-full">
-          <p className="text-2xl font-semibold">{nama}</p>
+          <p className="text-2xl md:text-xl font-semibold">{nama}</p>
           <img
             src={filePath}
             alt="mindmap"

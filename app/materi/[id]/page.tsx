@@ -63,13 +63,15 @@ export default function MateriPage({ params }: { params: { id: string } }) {
       <div className="min-h-screen w-screen bg-white">
         <div className="flex">
           <NavigationMenu link="/materi" darkMode={true} active="materi" />
-          <div className="ml-28 mt-10">
-            <p className="text-3xl font-semibold">{materi.mataPelajaran}</p>
+          <div className="ml-28 md:ml-24 mt-10">
+            <p className="text-3xl font-semibold md:text-2xl">
+              {materi.mataPelajaran}
+            </p>
             <div className="w-full h-1 bg-[#39576C] mt-1" />
             <p className="text-lg mt-1">{materi.namaUser}</p>
           </div>
         </div>
-        <div className="rounded-lg border-[3.5px] mx-auto border-[#39576C] w-4/5 p-5 mt-10">
+        <div className="rounded-lg border-[3.5px] mx-auto border-[#39576C] w-4/5 md:w-[90%] md:py-5 md:px-2 p-5 mt-10 md:mt-32 mb-5">
           <p className="text-center text-2xl font-medium mb-4">
             {materi.judul}
           </p>
@@ -80,7 +82,7 @@ export default function MateriPage({ params }: { params: { id: string } }) {
                 "/"
               )}`}
               alt=""
-              className="w-2/6 h-60 object-contain"
+              className="w-2/6 md:w-2/3 h-60 object-contain"
             />
           </div>
           <pre className="mt-2 text-wrap font-sans">{materi.isi}</pre>

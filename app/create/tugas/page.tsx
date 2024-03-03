@@ -69,14 +69,16 @@ export default function page() {
     <>
       <div className="min-h-screen w-screen bg-white">
         <div className="flex">
-          <NavigationMenu link="/" darkMode={true} active="tugas"/>
-          <div className="ml-28 mt-10">
-            <p className="text-3xl font-semibold">Tambahkan Tugas</p>
+          <NavigationMenu link="/" darkMode={true} active="tugas" />
+          <div className="ml-28 md:ml-24 mt-10">
+            <p className="text-3xl font-semibold md:text-2xl">
+              Tambahkan Tugas
+            </p>
             <div className="w-full h-0.5 bg-[#39576C] mt-1" />
             <p className="text-lg mt-1">{nama}</p>
           </div>
         </div>
-        <div className="ml-32 mt-16  font-inter w-fit">
+        <div className="ml-32 md:ml-0 md:mx-auto md:p-5 mt-16 md:mt-28 font-inter w-fit">
           <form onSubmit={handleSubmit} className="grid grid-cols-4 gap-3">
             <label
               htmlFor=""
@@ -152,7 +154,7 @@ export default function page() {
               style={{ resize: "none" }}
             />
 
-            {loading ?(
+            {loading ? (
               <button
                 type="submit"
                 className="col-span-4 bg-[#DE575A] text-white py-1.5 px-7 rounded-full w-fit justify-self-end mr-5 disabled:opacity-50"
