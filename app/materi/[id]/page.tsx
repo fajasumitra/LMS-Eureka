@@ -85,7 +85,7 @@ export default function MateriPage({ params }: { params: { id: string } }) {
               className="w-2/6 md:w-2/3 h-60 object-contain"
             />
           </div>
-          <pre className="mt-2 text-wrap font-sans">{materi.isi}</pre>
+          <pre className="mt-2 font-sans whitespace-pre-wrap">{materi.isi}</pre>
         </div>
       </div>
     </>
