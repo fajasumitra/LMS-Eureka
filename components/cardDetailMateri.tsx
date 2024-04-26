@@ -109,11 +109,13 @@ const ModuleCardProps: React.FC<ModuleCardProps> = ({
       >
         <div className="relative w-full">
           <p className="text-2xl md:text-xl font-semibold">{nama}</p>
-          <img
-            src={filePath}
-            alt="mindmap"
-            className="my-2 rounded-lg w-full h-36 object-contain"
-          />
+          <a href={filePath} target="_blank">
+            <img
+              src={filePath}
+              alt="mindmap"
+              className="my-2 rounded-lg w-full h-36 object-contain"
+            />
+          </a>
           <p className="text-sm">{isi}</p>
           {nilai === 5 && (
             <button
